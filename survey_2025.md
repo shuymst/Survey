@@ -1,3 +1,13 @@
-## [RANKCLIP: Ranking-Consistent Language-Image Pretraining](https://arxiv.org/pdf/2404.09387)
+## [RankCLIP: Ranking-Consistent Language-Image Pretraining](https://arxiv.org/pdf/2404.09387)
 - Yiming Zhang et al., 2024
-- 
+- CLIPの対照学習において負例はすべて同じように扱われており多くの情報が学習に考慮されていない
+  - たとえば犬の画像は飛行機よりも猫のキャプションとの方が類似度が高いはず
+- RankCLIPはranking consistency (ある入力に対して、より適切な候補がより高いスコアを持つように順位が整合していること) を学習することでmany-to-manyな関係性を学習する
+  - zero-shot分類や検索といった下流タスクでの性能の向上
+  - オリジナルのCLIPの目的関数に学習項を追加するだけなので、plug-and-playに採用可能
+- reference rankingがモデルの出力からサンプルされる確率をPlackett-Luce ranking modelでモデル化する
+- そのもとで計算したreference rankingが生じる確率を最大化させるように、CLIPの目的関数に学習項を追加する
+- ただしreference rankingはあるテキストと複数の画像の間のcos類似度から計算される
+- 対照学習時に計算するcos類似度行列が対称になるように学習しているといえる
+- 感想
+  - 正しい負例のランキングを与えることができていないため学習に正当性がないのは明確な弱点
