@@ -1,3 +1,6 @@
+## [Robust Cross-Modal Representation Learning with Progressive Self-Distillation](https://arxiv.org/pdf/2204.04588)
+- Alex Andonian et al., 2022
+
 ## [RankCLIP: Ranking-Consistent Language-Image Pretraining](https://arxiv.org/pdf/2404.09387)
 - Yiming Zhang et al., 2024
 - CLIPの対照学習において負例はすべて同じように扱われており多くの情報が学習に考慮されていない
@@ -8,6 +11,6 @@
 - reference rankingがモデルの出力からサンプルされる確率をPlackett-Luce ranking modelでモデル化する
 - そのもとで計算したreference rankingが生じる確率を最大化させるように、CLIPの目的関数に学習項を追加する
 - ただしreference rankingはあるテキストと複数の画像の間のcos類似度から計算される
-- 対照学習時に計算するcos類似度行列が対称になるように学習しているといえる
+- つまり対照学習時に計算するcos類似度行列が対称になるようにする学習項を追加しているといえる
 - 感想
   - 正しい負例のランキングを与えることができていないため学習に正当性がないのは明確な弱点
